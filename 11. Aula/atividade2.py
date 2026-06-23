@@ -12,8 +12,12 @@ try:
     #utf-8, iso-8859-1, latin1, cp1252
     df_ocorrecias = pd.read_csv(ENDERECO_DADOS, sep=";", encoding='iso-8859-1')
     
-    # separando por região Baixada Fluminense
-    df_ocorrecias = df_ocorrecias[df_ocorrecias['regiao'] == 'Baixada Fluminense']
+
+    # filtro por ano
+    df_ocorrecias = df_ocorrecias[df_ocorrecias['ano'].isin([2025, 2026])]
+
+    # filtro região Baixada Fluminense
+    df_ocorrecias = df_ocorrecias[df_ocorrecias['regiao'] == 'Interior']
 
     #deliminitando variáveis
     df_roubo_veiculo = df_ocorrecias[['munic','roubo_veiculo']]
