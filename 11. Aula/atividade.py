@@ -351,8 +351,9 @@ try:
     # Posição 4 - Gráfico de Frequência (Histograma)
     plt.subplot(2, 2, 4)
     plt.hist(array_roubo_veiculo, bins=393)
-    plt.axvline(media_roubo_veiculo, color='green', linewidth=2)
-    plt.axvline(mediana_roubo_veiculo, color='orange', linewidth=2)
+    plt.axvline(media_roubo_veiculo, color='green', linewidth=1, label='Média')
+    plt.axvline(mediana_roubo_veiculo, color='orange', linewidth=1, label='Mediana')
+    plt.legend()
 
     contagens, limites = np.histogram(array_roubo_veiculo, bins=393)
     print('\nFaixas do Histograma')
