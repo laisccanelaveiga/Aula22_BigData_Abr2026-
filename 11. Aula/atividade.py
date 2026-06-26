@@ -11,7 +11,7 @@ try:
 
     #utf-8, iso-8859-1, latin1, cp1252
     df_ocorrecias = pd.read_csv(ENDERECO_DADOS, sep=";", encoding='iso-8859-1')
-   
+    
     #deliminitando variáveis
     df_roubo_veiculo = df_ocorrecias[['munic','roubo_veiculo']]
     
@@ -350,9 +350,17 @@ try:
 
     # Posição 4 - Gráfico de Frequência (Histograma)
     plt.subplot(2, 2, 4)
-    plt.hist(array_roubo_veiculo, bins=100)
+    plt.hist(array_roubo_veiculo, bins=393)
     plt.axvline(media_roubo_veiculo, color='green', linewidth=2)
     plt.axvline(mediana_roubo_veiculo, color='orange', linewidth=2)
+
+    contagens, limites = np.histogram(array_roubo_veiculo, bins=393)
+    print('\nFaixas do Histograma')
+    for i in range(len(contagens)):
+        if contagens[i] > 0:
+            print(f'Faixa {i+1} -'
+            f' {limites[i]:.0f} até {limites[i+1]:.0f} => {contagens[i]} Municípios'
+            )
 
     plt.tight_layout() # Ajusta o layout
 
